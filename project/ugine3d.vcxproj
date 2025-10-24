@@ -165,7 +165,6 @@
     <ClCompile Include="..\src\stb_image.cpp" />
     <ClCompile Include="..\src\Texture.cpp" />
     <ClCompile Include="..\src\World.cpp" />
-    <ClCompile Include="Light.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\data\fragment.glsl" />
