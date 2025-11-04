@@ -1,7 +1,7 @@
 #pragma once
 #include <memory>
-#include "../glm/detail/type_mat.hpp"
-#include "Shader.h"
+#include "glm/detail/type_mat.hpp"
+#include "Graphics/Shader.h"
 
 class State
 {

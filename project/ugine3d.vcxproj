@@ -91,12 +91,13 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\U-Tad\Programacion_3D\PR3D - Practica 4\plantilla3d\lib;../lib/glew</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\includes;$(ProjectDir)..\lib</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>GLEW_STATIC;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>../lib/glfw</AdditionalLibraryDirectories>
       <AdditionalDependencies>glfw3.win64.lib;opengl32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -136,35 +137,39 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\includes\Core\Application.h" />
+    <ClInclude Include="..\includes\Core\InputManager.h" />
+    <ClInclude Include="..\includes\Core\State.h" />
+    <ClInclude Include="..\includes\Graphics\Buffer.h" />
+    <ClInclude Include="..\includes\Graphics\Material.h" />
+    <ClInclude Include="..\includes\Graphics\Mesh.h" />
+    <ClInclude Include="..\includes\Graphics\Shader.h" />
+    <ClInclude Include="..\includes\Graphics\Texture.h" />
+    <ClInclude Include="..\includes\Graphics\Vertex.h" />
+    <ClInclude Include="..\includes\Scene\Camera.h" />
+    <ClInclude Include="..\includes\Scene\Entity.h" />
+    <ClInclude Include="..\includes\Scene\Model.h" />
+    <ClInclude Include="..\includes\Scene\World.h" />
     <ClInclude Include="..\lib\glew\GL\glew.h" />
     <ClInclude Include="..\lib\glfw\glfw3.h" />
     <ClInclude Include="..\lib\glfw\glfw3native.h" />
-    <ClInclude Include="..\lib\includes\Buffer.h" />
-    <ClInclude Include="..\lib\includes\Camera.h" />
-    <ClInclude Include="..\lib\includes\Entity.h" />
-    <ClInclude Include="..\lib\includes\Material.h" />
-    <ClInclude Include="..\lib\includes\Mesh.h" />
-    <ClInclude Include="..\lib\includes\Model.h" />
-    <ClInclude Include="..\lib\includes\Shader.h" />
-    <ClInclude Include="..\lib\includes\State.h" />
-    <ClInclude Include="..\lib\includes\Texture.h" />
-    <ClInclude Include="..\lib\includes\Vertex.h" />
-    <ClInclude Include="..\lib\includes\World.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\lib\glew\glew.c" />
-    <ClCompile Include="..\src\Buffer.cpp" />
-    <ClCompile Include="..\src\Camera.cpp" />
-    <ClCompile Include="..\src\Entity.cpp" />
+    <ClCompile Include="..\src\Core\Application.cpp" />
+    <ClCompile Include="..\src\Core\InputManager.cpp" />
+    <ClCompile Include="..\src\Core\State.cpp" />
+    <ClCompile Include="..\src\Graphics\Buffer.cpp" />
+    <ClCompile Include="..\src\Graphics\Material.cpp" />
+    <ClCompile Include="..\src\Graphics\Mesh.cpp" />
+    <ClCompile Include="..\src\Graphics\Shader.cpp" />
+    <ClCompile Include="..\src\Graphics\Texture.cpp" />
     <ClCompile Include="..\src\main.cpp" />
-    <ClCompile Include="..\src\Material.cpp" />
-    <ClCompile Include="..\src\Mesh.cpp" />
-    <ClCompile Include="..\src\Model.cpp" />
-    <ClCompile Include="..\src\Shader.cpp" />
-    <ClCompile Include="..\src\State.cpp" />
-    <ClCompile Include="..\src\stb_image.cpp" />
-    <ClCompile Include="..\src\Texture.cpp" />
-    <ClCompile Include="..\src\World.cpp" />
+    <ClCompile Include="..\src\Scene\Camera.cpp" />
+    <ClCompile Include="..\src\Scene\Entity.cpp" />
+    <ClCompile Include="..\src\Scene\Model.cpp" />
+    <ClCompile Include="..\src\Scene\World.cpp" />
+    <ClCompile Include="..\src\Utils\stb_image.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\data\fragment.glsl" />

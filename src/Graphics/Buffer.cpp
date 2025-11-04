@@ -3,10 +3,10 @@
 #include <string>
 #include <vector>
 
-#include "../lib/glew/GL/glew.h"
-#include "../lib/includes/Vertex.h"
-#include "../lib/includes/Shader.h"
-#include "../lib/includes/Buffer.h"
+#include "glew/GL/glew.h"
+#include "Graphics/Vertex.h"
+#include "Graphics/Shader.h"
+#include "Graphics/Buffer.h"
 
 Buffer::Buffer(const std::vector<Vertex>& vertices, const std::vector<uint16_t>& indices)
 {
@@ -52,17 +52,8 @@ Buffer::~Buffer()
 
 void Buffer::draw(const Shader& shader) const 
 {
-
-	// Usar el programa de shader
-	
-
-	// Enlazar el VAO
 	glBindVertexArray(m_VAO);
-
-	shader.setupAttribs();
-	// Dibujar la geometría
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_EBO); // ?? asegura que esté vinculado
 	glDrawElements(GL_TRIANGLES, m_IndexCount, GL_UNSIGNED_SHORT, 0);
-
-	// Desvincular el VAO (opcional)
 	glBindVertexArray(0);
 }

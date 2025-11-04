@@ -1,7 +1,8 @@
 #pragma once
 
 #include "Entity.h"
-#include "../glm/glm.hpp"
+#include "glm/glm.hpp"
+
 class Camera: public Entity
 {
 public:

@@ -1,6 +1,5 @@
 
-
-#include "../lib/includes/Entity.h"
+#include "Scene/Entity.h"
 
 Entity::Entity()
 	: m_position(0.0f, 0.0f, 0.0f),

@@ -2,7 +2,7 @@
 
 #include <memory>
 #include "Entity.h"
-#include "Mesh.h"
+#include "Graphics/Mesh.h"
 
 class Model: public Entity
 {

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../lib/includes/Vertex.h"
-#include "State.h"
+#include "Graphics/Vertex.h"
+#include "Core/State.h"
 
 class Entity
 {

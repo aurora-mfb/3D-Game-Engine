@@ -1,9 +1,9 @@
 
 
-#include "../lib/includes/Camera.h"
-#include "../lib/glew/GL/glew.h"
-#include "../lib/glm/gtc/matrix_transform.hpp"
-#include "../lib/glm/gtc/quaternion.hpp"
+#include "Scene/Camera.h"
+#include "glew/GL/glew.h"
+#include "glm/gtc/matrix_transform.hpp"
+#include "glm/gtc/quaternion.hpp"
 
 
 Camera::Camera(const glm::mat4& proj, const glm::ivec4& vp, const glm::vec3& color)

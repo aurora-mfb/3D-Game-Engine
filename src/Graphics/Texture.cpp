@@ -1,7 +1,7 @@
 
-#include "../includes/Texture.h"
-#include "../glew/GL/glew.h"
-#include"iostream"
+#include "Graphics/Texture.h"
+#include "glew/GL/glew.h"
+#include "iostream"
 
 Texture::Texture() : Id(0), Size(0, 0)
 {

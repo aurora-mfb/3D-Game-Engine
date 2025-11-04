@@ -1,8 +1,8 @@
 #pragma once
 
 #include <cstdint>
-#include "../lib/glm/vec3.hpp"
-#include "../lib/glm/matrix.hpp"
+#include "glm/vec3.hpp"
+#include "glm/matrix.hpp"
 #include <unordered_map>
 #include <string>
 

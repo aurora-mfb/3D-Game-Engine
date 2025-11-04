@@ -1,6 +1,6 @@
 
 
-#include "../lib/includes/World.h"
+#include "Scene/World.h"
 
 World::World(): Entity(){}
 

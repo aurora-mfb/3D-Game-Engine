@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../lib/glm/vec3.hpp"
-#include "../lib/glm/vec2.hpp"
+#include "glm/vec3.hpp"
+#include "glm/vec2.hpp"
 
 struct Vertex {
     glm::vec3 position;      // vpos (x, y, z)

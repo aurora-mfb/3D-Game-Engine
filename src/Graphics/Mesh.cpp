@@ -1,8 +1,8 @@
 
 #define TINYOBJLOADER_IMPLEMENTATION
 
-#include "../lib/includes/Mesh.h"
-#include "../includes/State.h"
+#include "Graphics/Mesh.h"
+#include "Core/State.h"
 #include <stdexcept>
 #include <iostream>
 
@@ -64,14 +64,11 @@ std::shared_ptr<Mesh> Mesh::load(const char* filename, const std::shared_ptr<Sha
 
     // Material: si hay materiales en el OBJ, se carga la textura si existe
     std::shared_ptr<Texture> texture = nullptr;
-    if (!materials.empty()) {
+    if (!materials.empty() && !shape.mesh.material_ids.empty()) {
       int matId = shape.mesh.material_ids[0];
       if (matId >= 0 && matId < materials.size()) {
         std::string texFilename = materials[matId].diffuse_texname;
-        if (texFilename.empty()) {
-          // Si diffuse_texname está vacío, intenta con ambient_texname (map_Ka)
-          texFilename = materials[matId].ambient_texname;
-        }
+        if (texFilename.empty()) texFilename = materials[matId].ambient_texname;
         if (!texFilename.empty()) {
           texture = Texture::load((basePath + texFilename).c_str());
         }
@@ -107,9 +104,23 @@ std::shared_ptr<Buffer>& Mesh::getBuffer(size_t index) {
 
 void Mesh::draw()
 {
+    if (buffers.empty()) {
+      std::cerr << "[ERROR] La lista de buffers está vacía en Mesh::draw()." << std::endl;
+      return;
+    }
+
     for (const auto& BufferMaterialPair : buffers) {
         const std::shared_ptr<Buffer>& buffer = BufferMaterialPair.first;
         const Material& material = BufferMaterialPair.second;
+
+        if (!buffer) {
+          std::cerr << "[ERROR] Buffer nulo detectado en Mesh::draw()." << std::endl;
+          continue;
+        }
+        if (!material.getShader()) {
+          std::cerr << "[ERROR] Material sin shader válido detectado." << std::endl;
+          continue;
+        }
 
         // Configurar OpenGL con el material
         material.prepare();

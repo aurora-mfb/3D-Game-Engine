@@ -1,8 +1,8 @@
 #pragma once
 
 #include <memory>
-#include "../glm/glm.hpp"
-#include "../lib/stb_image.h"
+#include "glm/glm.hpp"
+#include "stb_image.h"
 
 class Texture
 {

@@ -1,11 +1,11 @@
 
-#include "../lib/includes/Shader.h"
-#include "../lib/glew/GL/glew.h"
-#include "../lib/glm/gtc/type_ptr.hpp"
+#include "Graphics/Shader.h"
+#include "glew/GL/glew.h"
+#include "glm/gtc/type_ptr.hpp"
 #include <fstream>
 #include <sstream>
 #include <string>
-#include "../lib/includes/Vertex.h"
+#include "Graphics/Vertex.h"
 
 
 std::string readString(const std::string& filename) {

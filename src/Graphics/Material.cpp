@@ -1,6 +1,6 @@
 
-#include "../includes/Material.h"
-#include "../lib/includes/State.h"
+#include "Graphics/Material.h"
+#include "Core/State.h"
 
 Material::Material(const std::shared_ptr<Texture>& tex, const std::shared_ptr<Shader>& shader)
 : texture(tex), shader(shader) {}

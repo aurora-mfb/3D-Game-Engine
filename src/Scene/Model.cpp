@@ -1,8 +1,8 @@
 
 
-#include "../lib/includes/Model.h"
-#include "../lib/glm/gtc/matrix_transform.hpp"
-#include "../lib/includes/Mesh.h"
+#include "Scene/Model.h"
+#include "glm/gtc/matrix_transform.hpp"
+#include "Graphics/Mesh.h"
 
 Model::Model(const std::shared_ptr<Mesh>& mesh):
 	Entity(), m_mesh(mesh){}

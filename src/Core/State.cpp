@@ -1,5 +1,5 @@
-#include "../includes/State.h"
-#include "../lib/glm/gtc/matrix_transform.hpp"
+#include "Core/State.h"
+#include "glm/gtc/matrix_transform.hpp"
 
 std::shared_ptr<Shader> State::defaultShader = nullptr;
 glm::mat4 State::projectionMatrix = glm::mat4(1.0f);

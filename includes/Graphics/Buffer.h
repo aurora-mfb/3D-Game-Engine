@@ -1,9 +1,9 @@
 #pragma once
 
-#include "../lib/glew/GL/glew.h"
+#include "glew/GL/glew.h"
 #include <vector>
-#include "../lib/includes/Vertex.h"
-#include "../lib/includes/Shader.h"
+#include "Graphics/Vertex.h"
+#include "Graphics/Shader.h"
 
 class Buffer
 {
