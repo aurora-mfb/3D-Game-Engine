@@ -18,18 +18,22 @@ This project is a 3D game engine developed entirely from scratch in C++ using Op
 The goal of this project was to gain hands-on experience with low-level graphics programming, understand how 3D engines manage rendering pipelines, input, and scene organization, and develop a foundational engine that can be extended for games or graphics applications.
 
 ## Technologies Used:
-* C++17 – Core language for engine logic
-* OpenGL 3.3+ – Rendering API for 3D graphics
-* GLEW – OpenGL extension loader
-* GLFW – Window creation and input handling
-* GLM – Math library for vectors, matrices, and transformations
+* C++17 – Core language for engine logic.
+* OpenGL 3.3+ – Rendering API for 3D graphics.
+* GLEW – OpenGL extension loader.
+* GLFW – Window creation and input handling.
+* GLM – Math library for vectors, matrices, and transformations.
 
 ## Project Structure:
-* Core/ – Main application loop and engine initialization (Application, States, etc.)
-* Managers/ – Subsystems like WindowManager, InputManager, WorldBuilder or Renderer.
-* Graphics/ – Meshes, shaders, buffers, materials, and textures.
-* Scene/ – 3D model assets, world, entities, etc.
-* Data/ – Shaders, textures, and other resources
+* data/ – Shaders, textures, and other resources.
+* includes/ – Header files (.h) of the program.
+  * Core/ – Application, etc.
+  * Graphics/ – Mesh, Material, Shader, Texture.
+  * Managers/ – InputManager, WindowManager, WorldBuilder, Renderer.
+  * Scene/ – World, Entities, Models, etc.
+* lib/ – Libraries used, e.g., GLFW.
+* project/ – Project solution files.
+* src/ – Source files (.cpp) corresponding to the headers, including the main class.
 
 ## How to Run:
 * Compile the project using a C++17 compiler with OpenGL, GLFW, and GLEW libraries, in my case, I used Visual Studio.
