@@ -13,7 +13,10 @@
 #include "Scene/Model.h"
 #include "Scene/World.h"
 #include "Graphics/Material.h"
-#include "Core/InputManager.h"
+#include "Managers/InputManager.h"
+#include "Managers/WindowManager.h"
+#include "Managers/Renderer.h"
+#include "Managers/WorldBuilder.h"
 
 class Application {
 public:
@@ -23,12 +26,13 @@ public:
   void shutdown();
 
 private:
-  bool initGL();
 
   GLFWwindow* window;
   std::shared_ptr<World> world;
   std::shared_ptr<Camera> camera;
   std::shared_ptr<InputManager> input;
+  std::shared_ptr<WindowManager> windowManager;
+  std::unique_ptr<Renderer> renderer;
   int width, height;
   std::string title;
 };

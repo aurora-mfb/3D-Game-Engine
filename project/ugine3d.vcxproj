@@ -138,7 +138,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\includes\Core\Application.h" />
-    <ClInclude Include="..\includes\Core\InputManager.h" />
     <ClInclude Include="..\includes\Core\State.h" />
     <ClInclude Include="..\includes\Graphics\Buffer.h" />
     <ClInclude Include="..\includes\Graphics\Material.h" />
@@ -146,6 +145,10 @@
     <ClInclude Include="..\includes\Graphics\Shader.h" />
     <ClInclude Include="..\includes\Graphics\Texture.h" />
     <ClInclude Include="..\includes\Graphics\Vertex.h" />
+    <ClInclude Include="..\includes\Managers\InputManager.h" />
+    <ClInclude Include="..\includes\Managers\Renderer.h" />
+    <ClInclude Include="..\includes\Managers\WindowManager.h" />
+    <ClInclude Include="..\includes\Managers\WorldBuilder.h" />
     <ClInclude Include="..\includes\Scene\Camera.h" />
     <ClInclude Include="..\includes\Scene\Entity.h" />
     <ClInclude Include="..\includes\Scene\Model.h" />
@@ -156,20 +159,23 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\lib\glew\glew.c" />
-    <ClCompile Include="..\src\Core\Application.cpp" />
-    <ClCompile Include="..\src\Core\InputManager.cpp" />
-    <ClCompile Include="..\src\Core\State.cpp" />
-    <ClCompile Include="..\src\Graphics\Buffer.cpp" />
-    <ClCompile Include="..\src\Graphics\Material.cpp" />
-    <ClCompile Include="..\src\Graphics\Mesh.cpp" />
-    <ClCompile Include="..\src\Graphics\Shader.cpp" />
-    <ClCompile Include="..\src\Graphics\Texture.cpp" />
+    <ClCompile Include="..\src\CoreSrc\Application.cpp" />
+    <ClCompile Include="..\src\CoreSrc\State.cpp" />
+    <ClCompile Include="..\src\GraphicsSrc\Buffer.cpp" />
+    <ClCompile Include="..\src\GraphicsSrc\Material.cpp" />
+    <ClCompile Include="..\src\GraphicsSrc\Mesh.cpp" />
+    <ClCompile Include="..\src\GraphicsSrc\Shader.cpp" />
+    <ClCompile Include="..\src\GraphicsSrc\Texture.cpp" />
     <ClCompile Include="..\src\main.cpp" />
-    <ClCompile Include="..\src\Scene\Camera.cpp" />
-    <ClCompile Include="..\src\Scene\Entity.cpp" />
-    <ClCompile Include="..\src\Scene\Model.cpp" />
-    <ClCompile Include="..\src\Scene\World.cpp" />
-    <ClCompile Include="..\src\Utils\stb_image.cpp" />
+    <ClCompile Include="..\src\ManagersSrc\InputManager.cpp" />
+    <ClCompile Include="..\src\ManagersSrc\Renderer.cpp" />
+    <ClCompile Include="..\src\ManagersSrc\WindowManager.cpp" />
+    <ClCompile Include="..\src\ManagersSrc\WorldBuilder.cpp" />
+    <ClCompile Include="..\src\SceneSrc\Camera.cpp" />
+    <ClCompile Include="..\src\SceneSrc\Entity.cpp" />
+    <ClCompile Include="..\src\SceneSrc\Model.cpp" />
+    <ClCompile Include="..\src\SceneSrc\World.cpp" />
+    <ClCompile Include="..\src\UtilsSrc\stb_image.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\data\fragment.glsl" />

@@ -13,5 +13,5 @@ public:
 
 private:
 
-	const std::shared_ptr<Mesh>& m_mesh;
+	std::shared_ptr<Mesh> m_mesh;
 };

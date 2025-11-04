@@ -12,6 +12,11 @@ int main()
 	Application app(SCREEN_WIDTH, SCREEN_HEIGHT, "Ugine3D"); 
 	if (!app.init()) 
 	{ 
+    std::cerr << "Error al inicializar la aplicación." << std::endl;
 		return -1; 
 	}
+
+  app.run();
+
+  return 0;
 }
