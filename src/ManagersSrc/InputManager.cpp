@@ -1,8 +1,7 @@
 #include "Managers/InputManager.h"
 
-#include <glm/gtc/matrix_transform.hpp>
-
-void InputManager::handleInput(GLFWwindow* window, std::shared_ptr<Camera> camera, float deltaTime) {
+void InputManager::handleInput(GLFWwindow* window, std::shared_ptr<Camera> camera, float deltaTime) 
+{
   glm::vec3 pos = camera->getPosition();
   float speed = 5.0f * deltaTime;
 
