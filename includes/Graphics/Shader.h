@@ -1,31 +1,39 @@
 #pragma once
 
-#include <cstdint>
-#include "glm/vec3.hpp"
-#include "glm/matrix.hpp"
-#include <unordered_map>
-#include <string>
+// Utils
+#include "unordered_map"
+#include "fstream"
+#include "sstream"
 
+// Libs
+#include "glm/gtc/type_ptr.hpp"
+
+// Includes
+#include "Graphics/Vertex.h"
 
 class Shader
 {
 public:
 
+	// Constructor that takes vertex and fragment shader source code
 	Shader(const char* vertexShaderSource, const char* fragmentShaderSource);
 
-	// Devuelve el identificador de OpenGL del programa 
+	// Returns the OpenGL program ID
 	uint32_t getId() const;
-	// Obtiene el mensaje de error generado al compilar o enlazar 
+
+	// Gets the error message generated during compilation or linking
 	const char* getError() const;
-	// Activa el uso de este programa 
+
+	// Activates this shader program for use
 	void use() const;
-	// Activa la escritura de las variables attribute, 
-	// y especifica su formato 
+
+	// Sets up the attribute variables and specifies their format
 	void setupAttribs() const;
 
-	// Obtiene la localización de una variable uniform 
+	// Gets the location of a uniform variable
 	int getLocation(const char* name) const;
-	// Da valor a una variable uniform 
+
+	// Sets the value of a uniform variable
 	void setInt(int loc, int val);
 	void setFloat(int loc, float val);
 	void setVec3(int loc, const glm::vec3& vec);
@@ -33,10 +41,20 @@ public:
 	void setMatrix(int loc, const glm::mat4& matrix);
 
 private:
-	uint32_t m_Id = 0;
-	uint32_t m_uVertexShader = 0;
-	uint32_t m_uFragmentShader = 0;
-	const char* m_Error = nullptr;
-	std::unordered_map<std::string, int> attribLocations;
+
+	// OpenGL program ID
+	uint32_t m_Id = 0; 
+
+	// Vertex shader ID
+	uint32_t m_uVertexShader = 0; 
+
+	// Fragment shader ID
+	uint32_t m_uFragmentShader = 0; 
+
+	// Compilation or linking error message
+	const char* m_Error = nullptr; 
+
+	// Attribute locations cache
+	std::unordered_map<std::string, int> attribLocations; 
 
 };
