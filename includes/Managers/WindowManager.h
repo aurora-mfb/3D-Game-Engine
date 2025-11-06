@@ -17,6 +17,7 @@ public:
   void shutdown();
   bool shouldClose() const;
   GLFWwindow* getWindow() const { return window; }
+  
 
 private:
 

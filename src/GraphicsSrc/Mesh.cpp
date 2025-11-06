@@ -2,7 +2,6 @@
 
 #include "Graphics/Mesh.h"
 
-
 void Mesh::addBuffer(const std::shared_ptr<Buffer>& buffer, const Material& material)
 {
   buffers.push_back({ buffer, material });

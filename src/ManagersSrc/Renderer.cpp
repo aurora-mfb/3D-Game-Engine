@@ -22,10 +22,3 @@ bool Renderer::init()
   // If everything succeeded, return true.
   return true;
 }
-
-void Renderer::clear() 
-{
-  // Clear both the color buffer and the depth buffer before drawing a new frame.
-  // This ensures that old frame data does not persist on screen.
-  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-}

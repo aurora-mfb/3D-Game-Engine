@@ -1,6 +1,5 @@
 #include "Scene/World.h"
 
-
 World::World(): Entity(){}
 
 World::~World(){}

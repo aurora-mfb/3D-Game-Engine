@@ -9,6 +9,5 @@ class Renderer
 public:
 
   bool init();
-  void clear();
 
 };

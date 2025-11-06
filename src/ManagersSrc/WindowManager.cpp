@@ -1,5 +1,11 @@
 #include "Managers/WindowManager.h"
 
+void framebuffer_size_callback(GLFWwindow* window, int width, int height)
+{
+  glViewport(0, 0, width, height);
+  // TODO: This won't work actually beacuse de camera function don't change its viewport.
+}
+
 bool WindowManager::init(int width, int height, const std::string& title) 
 {
   // Initialize the GLFW library (used for creating windows and handling input)
@@ -25,7 +31,7 @@ bool WindowManager::init(int width, int height, const std::string& title)
 
   // Enable sticky keys so GLFW remembers key states until polled
   glfwSetInputMode(window, GLFW_STICKY_KEYS, GLFW_TRUE);
-
+  glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
   return true;
 }
 

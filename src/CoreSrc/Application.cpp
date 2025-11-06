@@ -44,6 +44,13 @@ void Application::run() {
     float deltaTime = static_cast<float>(glfwGetTime() - lastTime);
     lastTime = glfwGetTime();
 
+    /* ------------------ CAMERA VIEWPORT CHANGES ------------------ */
+    GLint vp[4];
+    glGetIntegerv(GL_VIEWPORT, vp);
+    glm::ivec4 viewport = glm::ivec4(vp[0], vp[1], vp[2], vp[3]);
+
+    camera->setViewport(viewport);
+
     /* ------------------ CAMERA MOVEMENT ------------------ */
     input->handleInput(window, camera, deltaTime);
 
@@ -55,7 +62,6 @@ void Application::run() {
     }
 
     /* ------------------ RENDERING ------------------ */
-    renderer->clear(); // Clear the color and depth buffers
     world->draw(); // Draw all entities in the world
 
     windowManager->swapBuffers(); // Display the rendered frame
