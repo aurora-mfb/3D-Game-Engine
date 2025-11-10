@@ -16,6 +16,9 @@ void World::addEntity(const std::shared_ptr<Entity>& entity)
     // If it’s a camera, add it to the camera list as well
     m_cameras.push_back(camera);
   }
+
+  if (auto light = std::dynamic_pointer_cast<Light>(entity))
+    m_lights.push_back(light);
 }
 
 void World::removeEntity(const std::shared_ptr<Entity>& entity)
@@ -37,6 +40,12 @@ void World::removeEntity(const std::shared_ptr<Entity>& entity)
       m_cameras.erase(cameraIt);
     }
   }
+
+  if (auto light = std::dynamic_pointer_cast<Light>(entity)) {
+    auto itl = std::find(m_lights.begin(), m_lights.end(), light);
+    if (itl != m_lights.end())
+      m_lights.erase(itl);
+  }
 }
 
 const std::shared_ptr<Entity>& World::getEntity(size_t index) const
@@ -49,6 +58,19 @@ std::shared_ptr<Entity>& World::getEntity(size_t index)
   return m_entities.at(index);
 }
 
+const glm::vec3& World::getAmbient() const {
+  return m_ambient;
+}
+
+void World::setAmbient(const glm::vec3& ambient) {
+  m_ambient = ambient;
+}
+
+const std::vector<std::shared_ptr<Light>>& World::getLights() const
+{
+  return m_lights;
+}
+
 void World::update(float deltaTime)
 {
   for (auto& entity : m_entities)
@@ -59,6 +81,9 @@ void World::update(float deltaTime)
 
 void World::draw()
 {
+  State::lights = m_lights;
+  State::ambient = m_ambient;
+
   // Prepare each camera (sets up projection, view matrices, clears buffers, etc.)
   for (auto& camera : m_cameras)
   {

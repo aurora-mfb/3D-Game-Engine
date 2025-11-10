@@ -91,7 +91,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\includes;$(ProjectDir)..\lib</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\includes;$(ProjectDir)..\lib;$(ProjectDir)..\data</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>GLEW_STATIC;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -140,6 +140,7 @@
     <ClInclude Include="..\includes\Core\Application.h" />
     <ClInclude Include="..\includes\Core\State.h" />
     <ClInclude Include="..\includes\Graphics\Buffer.h" />
+    <ClInclude Include="..\includes\Graphics\Light.h" />
     <ClInclude Include="..\includes\Graphics\Material.h" />
     <ClInclude Include="..\includes\Graphics\Mesh.h" />
     <ClInclude Include="..\includes\Graphics\Shader.h" />
@@ -162,6 +163,7 @@
     <ClCompile Include="..\src\CoreSrc\Application.cpp" />
     <ClCompile Include="..\src\CoreSrc\State.cpp" />
     <ClCompile Include="..\src\GraphicsSrc\Buffer.cpp" />
+    <ClCompile Include="..\src\GraphicsSrc\Light.cpp" />
     <ClCompile Include="..\src\GraphicsSrc\Material.cpp" />
     <ClCompile Include="..\src\GraphicsSrc\Mesh.cpp" />
     <ClCompile Include="..\src\GraphicsSrc\Shader.cpp" />

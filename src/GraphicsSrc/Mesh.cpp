@@ -1,6 +1,9 @@
 #define TINYOBJLOADER_IMPLEMENTATION
 
 #include "Graphics/Mesh.h"
+#include <fstream>
+#include <iostream>
+#include <filesystem> // <-- este es el importante
 
 void Mesh::addBuffer(const std::shared_ptr<Buffer>& buffer, const Material& material)
 {
@@ -19,10 +22,34 @@ std::shared_ptr<Mesh> Mesh::load(const char* filename, const std::shared_ptr<Sha
   std::string basePath = modelPath.substr(0, modelPath.find_last_of("/\\") + 1);
 
   // Load the OBJ file and its materials
+  std::ifstream fileCheck(filename);
+  if (!fileCheck.is_open()) {
+    std::cerr << "[ERROR] No se encontró el archivo OBJ: " << filename << std::endl;
+    char buffer[512];
+    _fullpath(buffer, filename, 512);
+    std::cerr << "Ruta absoluta: " << buffer << std::endl;
+    throw std::runtime_error("El archivo OBJ no existe o la ruta es incorrecta.");
+  }
+  fileCheck.close();
+
+  std::cout << "[INFO] Cargando modelo: " << filename << std::endl;
+  std::cout << "Base path: " << basePath << std::endl;
+
+  // Intentamos cargar el modelo
   if (!tinyobj::LoadObj(&attrib, &shapes, &materials, &warn, &err,
     modelPath.c_str(), basePath.c_str(), true)) {
-    throw std::runtime_error(warn + err);
+    std::cerr << "[ERROR] Fallo al cargar el modelo OBJ: " << filename << std::endl;
+    if (!warn.empty()) std::cerr << "Aviso: " << warn << std::endl;
+    if (!err.empty())  std::cerr << "Error: " << err << std::endl;
+
+    throw std::runtime_error("Error al cargar el modelo: " + warn + err);
   }
+
+  std::cout << "[OK] Modelo cargado correctamente: " << filename << std::endl;
+  std::cout << " - Nº de vértices: " << attrib.vertices.size() / 3 << std::endl;
+  std::cout << " - Nº de shapes: " << shapes.size() << std::endl;
+  std::cout << " - Nº de materiales: " << materials.size() << std::endl;
+
 
   // Create a new mesh instance
   auto mesh = std::make_shared<Mesh>();
@@ -52,7 +79,21 @@ std::shared_ptr<Mesh> Mesh::load(const char* filename, const std::shared_ptr<Sha
       }
 
       // Create the vertex with position, white color, and texture coordinates
-      Vertex vertex(px, py, pz, 1.0f, 1.0f, 1.0f, tu, tv);
+      float nx = 0.0f;
+      float ny = 0.0f;
+      float nz = 1.0f;
+
+      if (index.normal_index >= 0) {
+        nx = attrib.normals[3 * index.normal_index + 0];
+        ny = attrib.normals[3 * index.normal_index + 1];
+        nz = attrib.normals[3 * index.normal_index + 2];
+      }
+
+      // Crear vertex con normales
+      Vertex vertex(px, py, pz,       // posición
+        1.0f, 1.0f, 1.0f, // color blanco
+        tu, tv,            // textura
+        nx, ny, nz);       // normal
 
       // Create a unique key combining vertex and texcoord indices
       int packedIndex = index.vertex_index * 10000 + index.texcoord_index;

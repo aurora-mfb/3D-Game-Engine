@@ -90,9 +90,10 @@ Shader::Shader(const char* cVertexShaderFile, const char* cFragmentShaderFile)
 	// -------------------
 	// Setup attribute locations
 	// -------------------
-	attribLocations["vPos"] = glGetAttribLocation(m_Id, "vpos");
-	attribLocations["vColor"] = glGetAttribLocation(m_Id, "vcolor");
-	attribLocations["vTex"] = glGetAttribLocation(m_Id, "vtex");
+	attribLocations["vPos"] = glGetAttribLocation(m_Id, "vPos");
+	attribLocations["vColor"] = glGetAttribLocation(m_Id, "vColor");
+	attribLocations["vTex"] = glGetAttribLocation(m_Id, "vTex");
+	attribLocations["vNormal"] = glGetAttribLocation(m_Id, "vNormal");
 }
 
 uint32_t Shader::getId() const
@@ -130,6 +131,9 @@ void Shader::setupAttribs() const
 			{ 
 				glVertexAttribPointer(attrib.second, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, textureCoord));
 			}
+			else if (attrib.first == "vNormal")
+				glVertexAttribPointer(attrib.second, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, normal));
+
 		}
 	}
 }

@@ -3,6 +3,7 @@
 // Headers
 #include "Entity.h"
 #include "Camera.h"
+#include "Graphics/Light.h"
 
 /**
  * @brief The World class represents a container for all entities and cameras in a scene.
@@ -42,6 +43,11 @@ public:
    */
   std::shared_ptr<Entity>& getEntity(size_t index);
 
+  const glm::vec3& getAmbient() const;
+  void setAmbient(const glm::vec3& ambient);
+
+  const std::vector<std::shared_ptr<Light>>& getLights() const;
+
   /**
    * @brief Updates all entities in the world based on the time elapsed since the last frame. Typically used for animations, movement, and physics.
    */
@@ -58,4 +64,8 @@ private:
 
   /* A list of cameras associated with the world. Usually, one camera is active at a time, but multiple can exist (e.g., for split-screen). */
   std::vector<std::shared_ptr<Camera>> m_cameras;
+
+  std::vector<std::shared_ptr<Light>> m_lights;
+
+  glm::vec3 m_ambient = glm::vec3(0.2f, 0.2f, 0.2f);
 };

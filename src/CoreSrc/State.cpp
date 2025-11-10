@@ -5,6 +5,8 @@ std::shared_ptr<Shader> State::defaultShader = nullptr;
 glm::mat4 State::projectionMatrix = glm::mat4(1.0f);
 glm::mat4 State::viewMatrix = glm::mat4(1.0f);
 glm::mat4 State::modelMatrix = glm::mat4(1.0f);
+std::vector<std::shared_ptr<Light>> State::lights;
+glm::vec3 State::ambient = glm::vec3(0.2f, 0.2f, 0.2f);
 
 void State::init() {
     State::defaultShader = std::make_shared<Shader>("path_to_vertex_shader", "path_to_fragment_shader");

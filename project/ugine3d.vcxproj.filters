@@ -105,6 +105,9 @@
     <ClInclude Include="..\includes\Scene\World.h">
       <Filter>Header Files\Scene</Filter>
     </ClInclude>
+    <ClInclude Include="..\includes\Graphics\Light.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\lib\glew\glew.c">
@@ -160,6 +163,9 @@
     </ClCompile>
     <ClCompile Include="..\src\SceneSrc\Model.cpp">
       <Filter>Source Files\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\GraphicsSrc\Light.cpp">
+      <Filter>Source Files\Graphics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

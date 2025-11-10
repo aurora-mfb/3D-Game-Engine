@@ -5,7 +5,7 @@ std::shared_ptr<World> WorldBuilder::createDefaultWorld(std::shared_ptr<Shader>&
   // --- Shader ---
   // Create a default shader by loading vertex and fragment shader files.
   // This shader will be used to render all models in the world by default.
-  defaultShader = std::make_shared<Shader>("data/vertex.glsl", "data/fragment.glsl");
+  defaultShader = std::make_shared<Shader>("../data/vertex.glsl", "../data/fragment.glsl");
   if (defaultShader->getId() == 0)
     throw std::runtime_error("Error al crear el shader.");
 
@@ -34,10 +34,11 @@ std::shared_ptr<World> WorldBuilder::createDefaultWorld(std::shared_ptr<Shader>&
 
   // Add the camera to the world so it can be used for rendering.
   world->addEntity(camera);
+  world->setAmbient(glm::vec3(0.2f, 0.2f, 0.2f));
 
   // --- Model ---
   // Load a 3D model from an OBJ file and associate it with the default shader.
-  auto cowboyMesh = Mesh::load("data/Models/gunslinger.obj", defaultShader);
+  auto cowboyMesh = Mesh::load("../data/Models/gunslinger.obj", defaultShader);
 
   // Wrap the mesh in a Model entity and set its position in the world.
   auto cowboyModel = std::make_shared<Model>(cowboyMesh);
@@ -45,6 +46,20 @@ std::shared_ptr<World> WorldBuilder::createDefaultWorld(std::shared_ptr<Shader>&
 
   // Add the model to the world so it will be drawn each frame.
   world->addEntity(cowboyModel);
+
+  // Luz direccional blanca
+  std::shared_ptr<Light> directionalLight = std::make_shared<Light>(Light::Type::DIRECTIONAL);
+  directionalLight->setColor(glm::vec3(1.0f, 1.0f, 1.0f));
+  // Simulamos dirección (1,1,1) rotándola hacia abajo y un poco al lado
+  directionalLight->setRotation(glm::vec3(-45.0f, 45.0f, 0.0f));
+  world->addEntity(directionalLight);
+
+  // Luz puntual roja (orbitará luego en Application::run)
+  std::shared_ptr<Light> pointLight = std::make_shared<Light>(Light::Type::POINT);
+  pointLight->setColor(glm::vec3(1.0f, 0.0f, 0.0f)); // rojo
+  pointLight->setLinearAttenuation(0.2f);
+  pointLight->setPosition(glm::vec3(2.0f, 2.0f, 0.0f)); // empieza a 5 unidades del modelo
+  world->addEntity(pointLight);
 
   // Return the fully constructed world.
   return world;

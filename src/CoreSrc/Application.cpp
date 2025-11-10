@@ -61,6 +61,18 @@ void Application::run() {
       model->setRotation(glm::vec3(0.0f, angle, 0.0f));
     }
 
+    // Recorremos las luces del mundo (si tu clase World tiene getLights())
+    for (auto& light : world->getLights()) {
+      if (light->getType() == Light::Type::POINT) {
+        float radius = 5.0f;
+        glm::vec3 newPos(
+          radius * cos(glm::radians(angle)),
+          2.0f,
+          radius * sin(glm::radians(angle))
+        );
+        light->setPosition(newPos);
+      }
+    }
     /* ------------------ RENDERING ------------------ */
     world->draw(); // Draw all entities in the world
 

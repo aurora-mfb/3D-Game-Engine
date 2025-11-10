@@ -38,6 +38,9 @@ Buffer::Buffer(const std::vector<Vertex>& vertices, const std::vector<uint16_t>&
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)offsetof(Vertex, textureCoord));
 	glEnableVertexAttribArray(2);
 
+	glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)offsetof(Vertex, normal));
+	glEnableVertexAttribArray(3);
+
 	// Desvincular el VAO (opcional)
 	glBindVertexArray(0);
 

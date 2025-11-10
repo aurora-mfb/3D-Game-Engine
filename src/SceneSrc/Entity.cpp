@@ -42,6 +42,21 @@ void Entity::setScale(const glm::vec3& scale)
 	m_scale = scale;
 }
 
+// --- Obtener posición en espacio mundial ---
+glm::vec3 Entity::getWorldPosition() const {
+  return m_position;
+}
+
+// --- Obtener vector "forward" en espacio mundial ---
+glm::vec3 Entity::getForwardVector() const {
+  // El vector "forward" en OpenGL suele ser el -Z en espacio local
+  glm::vec3 forward;
+  forward.x = cos(glm::radians(m_rotation.y)) * cos(glm::radians(m_rotation.x));
+  forward.y = sin(glm::radians(m_rotation.x));
+  forward.z = sin(glm::radians(m_rotation.y)) * cos(glm::radians(m_rotation.x));
+  return glm::normalize(forward);
+}
+
 void Entity::update(float deltaTime)
 {
 

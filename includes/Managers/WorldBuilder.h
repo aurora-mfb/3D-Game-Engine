@@ -7,6 +7,7 @@
 
 // Graphics:
 #include "Graphics/Shader.h"
+#include "Graphics/Light.h"
 
 // Scene:
 #include "Scene/World.h"

@@ -19,7 +19,12 @@ public:
     const glm::vec3& getScale() const;
     void setScale(const glm::vec3& scale);
 
-    void move(const glm::vec3& vec);
+    // --- Obtener posición en espacio mundial ---
+    glm::vec3 getWorldPosition() const;
+
+    // --- Obtener vector "forward" en espacio mundial ---
+    glm::vec3 getForwardVector() const;
+
     virtual void update(float deltaTime);
     virtual void draw();
 
